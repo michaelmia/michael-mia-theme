@@ -1,13 +1,14 @@
 <?php
 /**
- * GitHub Webhook Deploy Script
- * For WordPress theme: michael-mia-theme
+ * GitHub Webhook Deploy Script for WordPress Theme
+ * Path: /wp-content/themes/michael-mia-theme
+ * Logs: deploy.log
  */
 
 // -------------------------
 // CONFIGURATION
 // -------------------------
-$secret = '2ffdc64fa214f779f9ce5dbcc23637ed5fee2dd1438935d4cee3e634010e36d6'; // Replace with your GitHub webhook secret
+$secret = '491d62b656e516852ac647faa775dcc505479778046d6f2cae439ff758bc5c1d'; // Replace with your GitHub webhook secret
 $theme_path = '/home/u180542192/domains/michaelmia.me/public_html/wp-content/themes/michael-mia-theme';
 $log_file = $theme_path . '/deploy.log';
 
@@ -25,6 +26,8 @@ function log_message($message) {
 // -------------------------
 $headers = function_exists('getallheaders') ? getallheaders() : [];
 $signature = '';
+
+// GitHub may send lowercase headers
 if (isset($headers['X-Hub-Signature-256'])) {
     $signature = $headers['X-Hub-Signature-256'];
 } elseif (isset($headers['x-hub-signature-256'])) {
@@ -37,7 +40,7 @@ if (isset($headers['X-Hub-Signature-256'])) {
 if (!$signature) {
     http_response_code(403);
     log_message('No signature received.');
-    exit('No signature');
+    exit('No signature received.');
 }
 
 $payload = file_get_contents('php://input');
@@ -46,22 +49,33 @@ $sig_check = 'sha256=' . hash_hmac('sha256', $payload, $secret);
 if (!hash_equals($sig_check, $signature)) {
     http_response_code(403);
     log_message('Invalid signature.');
-    exit('Invalid signature');
+    exit('Invalid signature.');
 }
 
 // -------------------------
-// DEPLOY: git pull
+// DEPLOY
 // -------------------------
 log_message('Webhook verified. Deploying...');
 
+// Optional: build step (uncomment if needed)
+// exec("cd ".escapeshellarg($theme_path)." && npm install && npm run build 2>&1", $build_output, $build_return);
+// log_message("Build output:\n" . implode("\n", $build_output));
+
+// Git pull
 $cmd = "cd " . escapeshellarg($theme_path) . " && git reset --hard && git pull 2>&1";
 exec($cmd, $output, $return_var);
 
+log_message("Command: $cmd");
+log_message("Return code: $return_var");
+log_message("Output:\n" . implode("\n", $output));
+
 if ($return_var === 0) {
-    log_message("Git pull successful:\n" . implode("\n", $output));
-    echo "Deployment successful.";
+    log_message("Deployment successful.");
+    echo "Deployment successful.\n";
+    echo implode("\n", $output);
 } else {
-    log_message("Git pull failed:\n" . implode("\n", $output));
+    log_message("Deployment failed.");
     http_response_code(500);
-    echo "Deployment failed. Check deploy.log.";
+    echo "Deployment failed. Check deploy.log.\n";
+    echo implode("\n", $output);
 }
