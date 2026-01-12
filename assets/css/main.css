@@ -11907,6 +11907,10 @@ header .navbar {
   }
 }
 
+.nav-link:hover, .nav-link:focus {
+  color: #D2AF26;
+}
+
 .custom-logo {
   width: 120px;
   height: auto;
