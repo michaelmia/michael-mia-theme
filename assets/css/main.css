@@ -12066,7 +12066,7 @@ section {
 
 /* Submit button */
 .wpcf7 input[type=submit] {
-  background: linear-gradient(135deg, #0d6efd, #3b82f6);
+  background: linear-gradient(135deg, #333, #111);
   color: #fff;
   border: none;
   padding: 14px 32px;
@@ -12078,8 +12078,9 @@ section {
 }
 
 .wpcf7 input[type=submit]:hover {
-  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  background: #111;
   transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 /* Validation errors */
