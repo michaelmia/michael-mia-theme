@@ -1,47 +1,36 @@
 <?php
-// Fetch fields
-$title      = get_field('about_title');
-$text       = get_field('about_text');
-$image      = get_field('about_background');
-$video      = get_field('about_background_video');
-$poster     = get_field('about_background_poster');
+/**
+ * Contact Block Template
+ */
 
-// Block classes
-$classes = 'block-about';
+$title = get_field('contact_title');
+$text  = get_field('contact_text');
+$form  = get_field('contact_form'); // Post Object
+
+$classes = 'block-contact';
 $classes .= !empty($block['className']) ? ' ' . esc_attr($block['className']) : '';
 
-// Inline fallback image
-$style = '';
-if (!$video && $image && isset($image['url'])) {
-    $style = 'style="background-image: url(' . esc_url($image['url']) . ');"';
-}
-
-$block_id = '';
-if (!empty($block['anchor'])) {
-    $block_id = $block['anchor'];
-}
+$block_id = !empty($block['anchor']) ? esc_attr($block['anchor']) : '';
 ?>
 
-<section id="<?= esc_attr($block_id); ?>" class="<?= esc_attr($classes); ?>" <?= $style; ?>>
-    <?php if ($video): ?>
-        <video class="block-about__video"
-            autoplay muted loop playsinline preload="none" aria-hidden="true"
-            <?php if ($poster && isset($poster['url'])): ?>
-                poster="<?= esc_url($poster['url']); ?>"
-            <?php endif; ?>>
-            <source src="<?= esc_url($video['url']); ?>" type="video/mp4">
-        </video>
-    <?php endif; ?>
-
+<section id="<?= $block_id; ?>" class="<?= esc_attr($classes); ?> py-5">
     <div class="container">
+
         <?php if ($title): ?>
-            <h2><?= esc_html($title); ?></h2>
+            <h2 class="mb-3"><?= esc_html($title); ?></h2>
         <?php endif; ?>
 
         <?php if ($text): ?>
-            <div class="block-about__text">
+            <div class="block-contact__text mb-4">
                 <?= wp_kses_post($text); ?>
             </div>
         <?php endif; ?>
+
+        <?php if ($form && is_object($form)): ?>
+            <div class="block-contact__form">
+                <?= do_shortcode('[contact-form-7 id="' . esc_attr($form->ID) . '"]'); ?>
+            </div>
+        <?php endif; ?>
+
     </div>
 </section>
