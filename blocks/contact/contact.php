@@ -13,7 +13,7 @@ $classes .= !empty($block['className']) ? ' ' . esc_attr($block['className']) : 
 $block_id = !empty($block['anchor']) ? esc_attr($block['anchor']) : '';
 ?>
 
-<section id="<?= $block_id; ?>" class="<?= esc_attr($classes); ?> py-5">
+<section id="<?= $block_id; ?>" class="<?= esc_attr($classes); ?> py-5 bg-dark text-white">
     <div class="container text-center">
 
         <?php if ($title): ?>

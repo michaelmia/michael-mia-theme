@@ -12019,4 +12019,135 @@ section {
   pointer-events: none;
 }
 
+/* ==========================
+   Contact Form 7 - Modern Glass Style
+=========================== */
+/* Basic input, textarea, select styling */
+.wpcf7 input[type=text],
+.wpcf7 input[type=email],
+.wpcf7 input[type=tel],
+.wpcf7 input[type=url],
+.wpcf7 input[type=number],
+.wpcf7 select,
+.wpcf7 textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 15px;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Placeholder text */
+.wpcf7 input::placeholder,
+.wpcf7 textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focus / Active states */
+.wpcf7 input:focus,
+.wpcf7 textarea:focus,
+.wpcf7 select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+/* Textarea specific */
+.wpcf7 textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Submit button */
+.wpcf7 input[type=submit] {
+  background: linear-gradient(135deg, #0d6efd, #3b82f6);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wpcf7 input[type=submit]:hover {
+  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  transform: translateY(-2px);
+}
+
+/* Validation errors */
+.wpcf7-not-valid {
+  border-color: #dc3545 !important;
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 13px;
+  color: #dc3545;
+  margin-top: 6px;
+}
+
+/* Response messages */
+.wpcf7-response-output {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Optional glossy highlight */
+.wpcf7 input,
+.wpcf7 textarea {
+  position: relative;
+  overflow: hidden;
+}
+
+.wpcf7 textarea {
+  resize: none;
+}
+
+.block-contact__form {
+  max-width: 600px;
+  margin: auto;
+}
+
+.wpcf7 input[type=submit] {
+  width: 100%;
+}
+
+.wpcf7 input::before,
+.wpcf7 textarea::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* Responsive spacing */
+.wpcf7 p {
+  margin-bottom: 20px;
+}
+
+/* Optional: 2-column layout for desktop */
+@media (min-width: 768px) {
+  .wpcf7 .form-row {
+    display: flex;
+    gap: 20px;
+  }
+  .wpcf7 .form-row .wpcf7-form-control-wrap {
+    flex: 1;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
