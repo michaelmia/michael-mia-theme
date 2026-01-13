@@ -14,7 +14,7 @@ $block_id = !empty($block['anchor']) ? esc_attr($block['anchor']) : '';
 ?>
 
 <section id="<?= $block_id; ?>" class="<?= esc_attr($classes); ?> py-5 bg-dark text-white">
-    <div class="container text-center">
+    <div class="container text-center py-0 py-md-5">
 
         <?php if ($title): ?>
             <h2 class="mb-3"><?= esc_html($title); ?></h2>

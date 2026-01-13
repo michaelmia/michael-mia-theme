@@ -13,7 +13,7 @@ $classes .= !empty($block['className']) ? ' ' . esc_attr($block['className']) : 
 
 <?php if (have_rows('faqs')): ?>
 <section id="<?= $block_id; ?>" class="<?= esc_attr($classes); ?> py-5">
-    <div class="container">
+    <div class="container py-0 py-md-5">
         <h2 class="text-center mb-4">Frequently Asked Questions</h2>
         <div class="accordion" id="<?= $block_id; ?>-accordion">
             <?php
