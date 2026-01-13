@@ -11911,10 +11911,18 @@ header .navbar {
   color: #D2AF26;
 }
 
+.accordion-button:not(.collapsed) {
+  background-color: #D2AF26;
+}
+
 .custom-logo {
   width: 120px;
   height: auto;
   filter: brightness(0) invert(1);
+}
+
+.accordion-body p:last-child {
+  margin-bottom: 0;
 }
 
 section {
