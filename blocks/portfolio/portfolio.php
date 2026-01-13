@@ -22,7 +22,8 @@ if ($portfolio_query->have_posts()):
 ?>
 <section id="<?= esc_attr($block_id); ?>" class="<?= esc_attr($block_classes); ?> py-5 bg-secondary">
     <div class="container py-0 py-md-5">
-        <h2 class="text-white text-center mb-3">My Work</h2>
+        <h2 class="text-white text-center mb-3">Recent Projects</h2>
+        <p>Each project is built with performance, usability, and scalability in mind. I focus on solving real business problems — not just making things look good.</p>
         <div class="portfolio-slider">
             <?php while ($portfolio_query->have_posts()): $portfolio_query->the_post(); 
                 $post_id = get_the_ID();

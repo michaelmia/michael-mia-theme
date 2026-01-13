@@ -11861,7 +11861,7 @@ textarea.form-control-lg {
   }
 }
 h1 {
-  font-size: clamp(2.5rem, -4.9611rem + 15.5642vw, 5rem);
+  font-size: clamp(2.5rem, -4.9611rem + 15.5642vw, 4rem);
 }
 
 h2 {
