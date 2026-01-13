@@ -18,32 +18,37 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <?php if (has_custom_logo()): ?>
+
+            <?php if (has_custom_logo()) : ?>
                 <?php the_custom_logo(); ?>
-            <?php else: ?>
+            <?php else : ?>
                 <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
                     <?php bloginfo('name'); ?>
                 </a>
             <?php endif; ?>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler d-lg-none" type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="primaryMenu">
+            <!-- Desktop Menu -->
+            <div class="collapse navbar-collapse d-none d-lg-flex justify-content-end">
                 <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                        'depth'          => 2, // 1 = no dropdowns, 2 = with dropdowns.
-                        'container'      => 'div',
-                        'container_class'=> 'collapse navbar-collapse justify-content-end',
-                        'container_id'   => 'bs-example-navbar-collapse-1',
-                        'menu_class'     => 'nav navbar-nav text-white',
-                        'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'         => new WP_Bootstrap_Navwalker(),
-                    ) );
+                wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'depth'          => 2,
+                    'menu_class'     => 'navbar-nav',
+                    'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
+                    'walker'         => new WP_Bootstrap_Navwalker(),
+                ));
                 ?>
             </div>
+
         </div>
     </nav>
 </header>
