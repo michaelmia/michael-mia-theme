@@ -12193,5 +12193,14 @@ section {
     font-size: 1.5rem;
   }
 }
+.wp-block-media-text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.wp-block-media-text img {
+  border-radius: 100%;
+}
 
 /*# sourceMappingURL=main.css.map */
