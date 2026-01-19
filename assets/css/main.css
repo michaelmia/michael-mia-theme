@@ -12215,6 +12215,7 @@ section {
 .block-about__text li {
   list-style: none;
   width: max-content;
+  margin: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
