@@ -2,8 +2,7 @@
 get_header(); 
 ?>
 
-<main class="py-5">
-    <div class="container py-5 mt-5 text-center">
+<main>
         <?php
         if ( have_posts() ):
             while ( have_posts() ): the_post(); 
@@ -14,18 +13,23 @@ get_header();
 
             <article class="post-single">
                 
-                <?php if ($title): ?>
-                    <h1 class="mb-3"><?= esc_html($title); ?></h1>
-                <?php endif; ?>
-
-                <?php if ($featured_image): ?>
-                    <div class="mb-4 text-center">
-                        <img src="<?= esc_url($featured_image); ?>" alt="<?= esc_attr($title); ?>" class="img-fluid rounded shadow-sm">
+                <div class="blog-header text-center py-5">
+                    <div class="container">
+                        <?php if ($title): ?>
+                            <h1 class="mb-3 text-white"><?= esc_html($title); ?></h1>
+                        <?php endif; ?>
                     </div>
-                <?php endif; ?>
+                    <?php if ($featured_image): ?>
+                        <img src="<?= esc_url($featured_image); ?>" alt="<?= esc_attr($title); ?>" class="bg-image">
+                    <?php endif; ?>
+                </div>
 
-                <div class="post-content">
-                    <?= wp_kses_post($content); ?>
+                
+                
+                <div class="blog-content post-content py-5">
+                    <div class="container">
+                        <?= wp_kses_post($content); ?>
+                    </div>
                 </div>
 
             </article>
@@ -34,7 +38,6 @@ get_header();
             endwhile;
         endif;
         ?>
-    </div>
 </main>
 
 <?php get_footer(); ?>
