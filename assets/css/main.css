@@ -12218,4 +12218,10 @@ section {
   margin: auto;
 }
 
+.block-faqs .accordion {
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+}
+
 /*# sourceMappingURL=main.css.map */
