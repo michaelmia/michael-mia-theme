@@ -308,3 +308,11 @@ section {
     z-index: -1;
     filter: brightness(0.1);
 }
+.blog-content h2 {
+    font-size: clamp(1.875rem, -1.8555rem + 7.7821vw, 2.125rem);
+}
+@media (min-width: 1200px) {
+    .blog-content h3, .blog-content .h3 {
+        font-size: 1.5rem;
+    }
+}
